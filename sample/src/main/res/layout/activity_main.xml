@@ -1,0 +1,29 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity">
+
+    <pl.schibsted.roundoverlayprogress.RoundOverlayProgressView
+        android:id="@+id/progress_view"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/sample_image"
+        app:maxProgress="100" />
+
+    <Button
+        android:id="@+id/random_button"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Set random progress"
+        android:textAllCaps="true" />
+
+</LinearLayout>
