@@ -8,6 +8,8 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.util.AttributeSet;
@@ -37,6 +39,27 @@ public class RoundOverlayProgressView extends ImageView {
     public RoundOverlayProgressView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(attrs);
+    }
+
+    @Override
+    protected Parcelable onSaveInstanceState() {
+        Parcelable superState = super.onSaveInstanceState();
+        return new SavedState(superState, progressColor, maxProgress, currentProgress, animationDuration, animate);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Parcelable state) {
+        if (state instanceof SavedState) {
+            SavedState savedState = (SavedState) state;
+            super.onRestoreInstanceState(savedState.getSuperState());
+            this.progressColor = savedState.progressColor;
+            this.maxProgress = savedState.maxProgress;
+            this.currentProgress = savedState.currentProgress;
+            this.animationDuration = savedState.animationDuration;
+            this.animate = savedState.animate;
+        } else {
+            super.onRestoreInstanceState(state);
+        }
     }
 
     private void init(AttributeSet attrs) {
@@ -135,4 +158,52 @@ public class RoundOverlayProgressView extends ImageView {
     public void setAnimate(boolean animate) {
         this.animate = animate;
     }
+
+    static class SavedState extends BaseSavedState {
+
+        public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator<SavedState>() {
+            public SavedState createFromParcel(Parcel in) {
+                return new SavedState(in);
+            }
+
+            public SavedState[] newArray(int size) {
+                return new SavedState[size];
+            }
+        };
+
+        public int progressColor;
+        public int maxProgress;
+        public int currentProgress;
+        public int animationDuration;
+        public boolean animate;
+
+        public SavedState(Parcelable superState, int progressColor, int maxProgress, int currentProgress, int animationDuration, boolean animate) {
+            super(superState);
+            this.progressColor = progressColor;
+            this.maxProgress = maxProgress;
+            this.currentProgress = currentProgress;
+            this.animationDuration = animationDuration;
+            this.animate = animate;
+        }
+
+        private SavedState(Parcel in) {
+            super(in);
+            this.progressColor = in.readInt();
+            this.maxProgress = in.readInt();
+            this.currentProgress = in.readInt();
+            this.animationDuration = in.readInt();
+            this.animate = in.readInt() == 1;
+        }
+
+        @Override
+        public void writeToParcel(Parcel out, int flags) {
+            super.writeToParcel(out, flags);
+            out.writeInt(progressColor);
+            out.writeInt(maxProgress);
+            out.writeInt(currentProgress);
+            out.writeInt(animationDuration);
+            out.writeInt(animate ? 1 : 0);
+        }
+    }
+
 }
