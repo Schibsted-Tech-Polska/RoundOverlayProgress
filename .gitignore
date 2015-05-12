@@ -1,7 +1,33 @@
+# defaults
 .gradle
 /local.properties
 /.idea/workspace.xml
-/.idea/libraries
 .DS_Store
-/build
-/captures
+*/build
+*/intermediates
+.project
+.classpath
+.settings
+.checkstyle
+
+# IntelliJ IDEA
+.idea
+*.iml
+*.ipr
+*.iws
+classes
+gen-external-apklibs
+*.apk
+
+# Other
+*.keystore
+
+#Owl
+/backend/build
+/facebook/build
+.bat
+/gradle
+
+#Crashalytics
+com_crashlytics_export_strings.xml
+crashlytics-build.properties
