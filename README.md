@@ -3,7 +3,7 @@ Android library for progress component with coloured overlay. You don't need rou
 
 Library is available from Android 4.0 (API 14).
 
-<img src="http://recordit.co/l4dqVNcQ2K" height="340" />
+<img src="http://g.recordit.co/l4dqVNcQ2K.gif" height="340" />
 
 #Usage
 ```
