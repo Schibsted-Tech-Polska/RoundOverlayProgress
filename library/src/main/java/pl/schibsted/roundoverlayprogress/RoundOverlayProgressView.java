@@ -108,7 +108,7 @@ public class RoundOverlayProgressView extends ImageView {
 
         float percentProgress = (float) progress / (float) maxProgress;
         int angle = (int) (360.0 * percentProgress);
-        return angle * -1;
+        return angle;
     }
 
     public void setProgress(int newProgress) {
