@@ -35,7 +35,7 @@ repositories {
 }
 
 dependencies {
-    compile('com.github.Schibsted-Tech-Polska:RoundOverlayProgress:1.0.1') {
+    compile('com.github.Schibsted-Tech-Polska:RoundOverlayProgress:1.0.2') {
         exclude module: 'appcompat-v7'
     }
 }
