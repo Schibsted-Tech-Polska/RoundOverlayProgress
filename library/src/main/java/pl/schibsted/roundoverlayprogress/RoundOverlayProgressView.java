@@ -87,8 +87,8 @@ public class RoundOverlayProgressView extends ImageView {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        int angle = calculateAngle(currentProgress);
-        if (angle == 0) return;
+        float startAngle = calculateStartAngle(currentProgress);
+        if (startAngle == 0) return;
 
         RectF box = new RectF(0, 0, canvas.getWidth(), canvas.getHeight());
         Paint paint = new Paint();
@@ -99,15 +99,18 @@ public class RoundOverlayProgressView extends ImageView {
         paint.setStyle(Paint.Style.FILL_AND_STROKE);
         paint.setColor(getResources().getColor(progressColor));
 
-        canvas.drawArc(box, 270, angle, true, paint);
+        float percentProgress = (float) currentProgress / (float) maxProgress;
+        float sweepAngle = 360f - (360f * percentProgress);
+
+        canvas.drawArc(box, startAngle, sweepAngle, true, paint);
     }
 
-    private int calculateAngle(int progress) {
+    private float calculateStartAngle(int progress) {
         if (progress > maxProgress)
             throw new IndexOutOfBoundsException("Current progress can't be bigger than maxProgress. If you did not specify max progress, either in xml or by setMaxProgress() it is automatically set to 100");
 
         float percentProgress = (float) progress / (float) maxProgress;
-        int angle = (int) (360.0 * percentProgress);
+        float angle = 360f * percentProgress + 270f;
         return angle;
     }
 
