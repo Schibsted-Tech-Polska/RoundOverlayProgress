@@ -68,7 +68,7 @@ public class RoundOverlayProgressView extends ImageView {
         int src = attrs.getAttributeResourceValue("http://schemas.android.com/apk/res/android", "src", 0);
         BitmapDrawable bitmapDrawable = (BitmapDrawable) getResources().getDrawable(src);
 
-        progressColor = a.getInteger(R.styleable.RoundOverlayProgressView_progressColor, R.color.default_progress);
+        progressColor = a.getColor(R.styleable.RoundOverlayProgressView_progressColor, R.color.default_progress);
         maxProgress = a.getInteger(R.styleable.RoundOverlayProgressView_maxProgress, 100);
         animationDuration = a.getInteger(R.styleable.RoundOverlayProgressView_animationDuration, 300);
         animate = a.getBoolean(R.styleable.RoundOverlayProgressView_animate, true);
@@ -97,7 +97,7 @@ public class RoundOverlayProgressView extends ImageView {
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(1f);
         paint.setStyle(Paint.Style.FILL_AND_STROKE);
-        paint.setColor(getResources().getColor(progressColor));
+        paint.setColor(progressColor);
 
         float percentProgress = (float) currentProgress / (float) maxProgress;
         float sweepAngle = 360f - (360f * percentProgress);

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="RoundOverlayProgressView">
-        <attr name="progressColor" format="integer" />
+        <attr name="progressColor" format="color" />
         <attr name="maxProgress" format="integer" />
         <attr name="animationDuration" format="integer" />
         <attr name="animate" format="boolean" />
