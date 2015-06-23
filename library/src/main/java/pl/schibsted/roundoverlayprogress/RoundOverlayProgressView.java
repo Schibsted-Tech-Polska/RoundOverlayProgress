@@ -76,11 +76,20 @@ public class RoundOverlayProgressView extends ImageView {
         a.recycle();
 
         Bitmap bitmap = bitmapDrawable.getBitmap();
-        if (bitmap != null) {
-            RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(), bitmap);
-            roundedBitmapDrawable.setCornerRadius(Math.max(bitmap.getWidth(), bitmap.getHeight()) / 2.0f);
-            setImageDrawable(roundedBitmapDrawable);
-        }
+        if (bitmap != null) setImageBitmap(bitmap);
+    }
+
+    @Override
+    public void setImageBitmap(Bitmap bitmap) {
+        RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(getResources(), bitmap);
+        roundedBitmapDrawable.setCornerRadius(Math.max(bitmap.getWidth(), bitmap.getHeight()) / 2.0f);
+        setImageDrawable(roundedBitmapDrawable);
+    }
+
+    @Override
+    public void setImageResource(int resId) {
+        BitmapDrawable bitmapDrawable = (BitmapDrawable) getResources().getDrawable(resId);
+        setImageBitmap(bitmapDrawable.getBitmap());
     }
 
     @Override
