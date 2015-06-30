@@ -115,10 +115,13 @@ public class RoundOverlayProgressView extends ImageView {
     }
 
     private float calculateStartAngle(int progress) {
-        if (progress > maxProgress)
-            throw new IndexOutOfBoundsException("Current progress can't be bigger than maxProgress. If you did not specify max progress, either in xml or by setMaxProgress() it is automatically set to 100");
+        float percentProgress = 0f;
+        if (progress >= maxProgress) {
+            percentProgress = 100f;
+        } else {
+            percentProgress = (float) progress / (float) maxProgress;
+        }
 
-        float percentProgress = (float) progress / (float) maxProgress;
         float angle = 360f * percentProgress + 270f;
         return angle;
     }
