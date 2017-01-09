@@ -1,3 +1,5 @@
+[![](https://jitpack.io/v/jkwiecien/EasyImage.svg)](https://jitpack.io/#Schibsted-Tech-Polska/RoundOverlayProgress)
+
 #RoundOverlayProgress
 Android library for progress component with coloured overlay. You don't need rounded image to make it work. Library will crop it for you.
 
@@ -13,7 +15,7 @@ Add RoundOverlayProgress in your layout:
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:src="@drawable/sample_image"
-        app:maxProgress="100" />
+        app:ropv_maxProgress="100" />
 ```
         
 Change progress like this:
@@ -24,19 +26,9 @@ progressView.setProgress(80);
 #Configuration
 It's a simple component extending ImageView. It's easily configurable. Below list of available xml attributes:
 
-        app:maxProgress="100"           //max progress - 100 by default
-        app:animate="false"             //should animate? -true by default
-        app:animationDuration="500"     //animation duration in milis - 300 by default
-        app:progressColor="#66FFFFFF"   //progress overlay color - transparent white by default
+        app:ropv_maxProgress="100"           //max progress - 100 by default
+        app:ropv_animate="false"             //should animate? -true by default
+        app:ropv_animationDuration="500"     //animation duration in milis - 300 by default
+        app:ropv_progressColor="#66FFFFFF"   //progress overlay color - transparent white by default
 #Setup
-```
-repositories {
-    maven { url "https://jitpack.io" }
-}
-
-dependencies {
-    compile('com.github.Schibsted-Tech-Polska:RoundOverlayProgress:1.0.9') {
-        exclude module: 'appcompat-v7'
-    }
-}
-```
+[![](https://jitpack.io/v/jkwiecien/EasyImage.svg)](https://jitpack.io/#Schibsted-Tech-Polska/RoundOverlayProgress)
