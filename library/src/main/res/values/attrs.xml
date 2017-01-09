@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="RoundOverlayProgressView">
-        <attr name="progressColor" format="color" />
-        <attr name="maxProgress" format="integer" />
-        <attr name="animationDuration" format="integer" />
-        <attr name="animate" format="boolean" />
+        <attr name="ropv_progressColor" format="color" />
+        <attr name="ropv_maxProgress" format="integer" />
+        <attr name="ropv_animationDuration" format="integer" />
+        <attr name="ropv_animate" format="boolean" />
     </declare-styleable>
 
 </resources>
